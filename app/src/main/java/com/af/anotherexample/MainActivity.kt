@@ -24,10 +24,18 @@ class MainActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this,viewModelFactory)[MainViewModel::class.java]
 
         binding.button.setOnClickListener {
-            viewModel.getPost2(binding.editTextNumber.text.toString().toInt())
-            viewModel.myResponse2.observe(this, Observer {response->
+            viewModel.getCustomPost(binding.editTextNumber.text.toString().toInt())
+            viewModel.myResponse3.observe(this, Observer {response->
                 if(response.isSuccessful) {
                     binding.textView.text=response.body().toString()
+                    response.body()?.forEach{
+                        Log.d("Response",it.userId.toString())
+                        Log.d("Response",it.id.toString())
+                        Log.d("Response",it.title)
+                        Log.d("Response",it.body)
+                        Log.d("Response","--------")
+
+                    }
                 }else{
                     binding.textView.text=response.code().toString()
                 }
