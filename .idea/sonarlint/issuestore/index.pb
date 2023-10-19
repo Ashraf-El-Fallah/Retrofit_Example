@@ -29,3 +29,9 @@ e
 0app/src/main/java/com/af/retrofit/TodoAdapter.kt,e\5\e56182b306b086c7537f17bbd565e8bfc38ef0bb
 \
 ,app/src/main/java/com/af/retrofit/TodoApi.kt,e\b\eb7cde1ac35d5aa40759d601ed2d6aaf5585d775
+w
+G.idea/sonarlint/issuestore/9/9/990b432225eb1fd92da170a3eba32f5a7ba855fd,d\1\d11511da0a95ab9a34fdaa390ff1769bb8f91780
+S
+#.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
+]
+-.idea/sonarlint/securityhotspotstore/index.pb,8\8\88a9255124c95bdc913197c120a8d560edc59c8e
