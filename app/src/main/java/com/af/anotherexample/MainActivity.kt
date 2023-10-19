@@ -1,4 +1,5 @@
 package com.af.anotherexample
+
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -9,7 +10,8 @@ import com.af.retrofit.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-//    private lateinit var todoAdapter: TodoAdapter
+
+    //    private lateinit var todoAdapter: TodoAdapter
 //    val Tag = "Main Activity"
     private lateinit var viewModel: MainViewModel
 
@@ -19,33 +21,35 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 //        setUpRecyclerView()
 
+        val options: HashMap<String, String> = HashMap()
+        options["_sort"]="id"
+        options["_order"]="desc"
+
         val repository = Repository()
         val viewModelFactory = MainViewModelFactory(repository)
-        viewModel = ViewModelProvider(this,viewModelFactory)[MainViewModel::class.java]
+        viewModel = ViewModelProvider(this, viewModelFactory)[MainViewModel::class.java]
 
         binding.button.setOnClickListener {
-            viewModel.getCustomPost(binding.editTextNumber.text.toString().toInt())
-            viewModel.myResponse3.observe(this, Observer {response->
-                if(response.isSuccessful) {
-                    binding.textView.text=response.body().toString()
-                    response.body()?.forEach{
-                        Log.d("Response",it.userId.toString())
-                        Log.d("Response",it.id.toString())
-                        Log.d("Response",it.title)
-                        Log.d("Response",it.body)
-                        Log.d("Response","--------")
+            viewModel.getCustomPost2(binding.editTextNumber.text.toString().toInt(),options)
+            viewModel.myResponse4.observe(this, Observer { response ->
+                if (response.isSuccessful) {
+                    binding.textView.text = response.body().toString()
+                    response.body()?.forEach {
+                        Log.d("Response", it.userId.toString())
+                        Log.d("Response", it.id.toString())
+                        Log.d("Response", it.title)
+                        Log.d("Response", it.body)
+                        Log.d("Response", "--------")
 
                     }
-                }else{
-                    binding.textView.text=response.code().toString()
+                } else {
+                    binding.textView.text = response.code().toString()
                 }
 
             })
 
 
         }
-
-
 
 
         //philip example
