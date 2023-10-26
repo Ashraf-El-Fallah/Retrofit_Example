@@ -8,6 +8,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.af.anotherexample.adapter.MyAdapter
+import com.af.anotherexample.model.Post
 import com.af.anotherexample.repository.Repository
 import com.af.retrofit.databinding.ActivityMainBinding
 
@@ -17,7 +18,7 @@ class MainActivity : AppCompatActivity() {
     //    private lateinit var todoAdapter: TodoAdapter
 //    val Tag = "Main Activity"
     private lateinit var viewModel: MainViewModel
-    private  val adapter by lazy { MyAdapter() }
+    private val adapter by lazy { MyAdapter() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,10 +32,15 @@ class MainActivity : AppCompatActivity() {
         val viewModelFactory = MainViewModelFactory(repository)
         viewModel = ViewModelProvider(this, viewModelFactory)[MainViewModel::class.java]
 
-        viewModel.getCustomPost(5, "id", "desc")
-        viewModel.myResponse3.observe(this, Observer { response ->
+//        viewModel.getCustomPost(5, "id", "desc")
+       // val myPost = Post("Android Developer", 2, "Ashraf", 23)
+        viewModel.pushPost2(2,2,".....",",.......")
+        viewModel.myResponse.observe(this, Observer { response ->
             if (response.isSuccessful) {
-                response.body()?.let { adapter.setData(it) }
+                //response.body()?.let { adapter.setData(it) }
+                Log.d("Main", response.body().toString())
+                Log.d("Main", response.code().toString())
+                Log.d("Main", response.message())
             } else {
                 Toast.makeText(this, response.code(), Toast.LENGTH_LONG).show()
             }
