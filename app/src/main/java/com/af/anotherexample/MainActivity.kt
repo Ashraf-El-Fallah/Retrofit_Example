@@ -33,14 +33,14 @@ class MainActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this, viewModelFactory)[MainViewModel::class.java]
 
 //        viewModel.getCustomPost(5, "id", "desc")
-       // val myPost = Post("Android Developer", 2, "Ashraf", 23)
-        viewModel.pushPost2(2,2,".....",",.......")
+//        val myPost = Post("Android Developer", 2, "Ashraf", 23)
+        viewModel.getPost("111222")
         viewModel.myResponse.observe(this, Observer { response ->
             if (response.isSuccessful) {
                 //response.body()?.let { adapter.setData(it) }
                 Log.d("Main", response.body().toString())
                 Log.d("Main", response.code().toString())
-                Log.d("Main", response.message())
+                Log.d("Main", response.headers().toString())
             } else {
                 Toast.makeText(this, response.code(), Toast.LENGTH_LONG).show()
             }

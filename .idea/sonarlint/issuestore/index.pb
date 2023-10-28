@@ -37,3 +37,5 @@ S
 -.idea/sonarlint/securityhotspotstore/index.pb,8\8\88a9255124c95bdc913197c120a8d560edc59c8e
 l
 <app/src/main/java/com/af/anotherexample/adapter/MyAdapter.kt,2\c\2cb1d0152d5e522c3414b73f7d81df1a2ddcc58e
+l
+<app/src/main/java/com/af/anotherexample/api/MyInterceptor.kt,3\c\3c2359e1a321b35aba6965ebe5abb342dbf6f60b
